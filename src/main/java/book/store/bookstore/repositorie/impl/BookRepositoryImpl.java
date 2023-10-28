@@ -1,7 +1,7 @@
-package book.store.bookstore.repositories.impls;
+package book.store.bookstore.repositorie.impl;
 
-import book.store.bookstore.models.Book;
-import book.store.bookstore.repositories.BookRepository;
+import book.store.bookstore.model.Book;
+import book.store.bookstore.repositorie.BookRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;

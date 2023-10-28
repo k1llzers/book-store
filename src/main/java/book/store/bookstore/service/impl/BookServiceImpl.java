@@ -1,8 +1,8 @@
-package book.store.bookstore.services.impls;
+package book.store.bookstore.service.impl;
 
-import book.store.bookstore.models.Book;
-import book.store.bookstore.repositories.BookRepository;
-import book.store.bookstore.services.BookService;
+import book.store.bookstore.model.Book;
+import book.store.bookstore.repositorie.BookRepository;
+import book.store.bookstore.service.BookService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
