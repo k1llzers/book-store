@@ -2,13 +2,12 @@ package book.store.bookstore.repositories.impls;
 
 import book.store.bookstore.models.Book;
 import book.store.bookstore.repositories.BookRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -34,7 +33,8 @@ public class BookRepositoryImpl implements BookRepository {
     @Override
     public List<Book> findAll() {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("from " + Book.class.getSimpleName(), Book.class).getResultList();
+            return session.createQuery("from " + Book.class.getSimpleName(),
+                    Book.class).getResultList();
         } catch (Exception e) {
             throw new RuntimeException("Can't get all books from db", e);
         }
