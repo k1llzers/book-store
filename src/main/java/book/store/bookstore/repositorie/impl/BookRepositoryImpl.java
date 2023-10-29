@@ -26,7 +26,7 @@ public class BookRepositoryImpl implements BookRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can`t insert book into DB: " + book,e);
+            throw new RuntimeException("Can`t insert book into DB: " + book, e);
         }
     }
 
@@ -35,8 +35,6 @@ public class BookRepositoryImpl implements BookRepository {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from " + Book.class.getSimpleName(),
                     Book.class).getResultList();
-        } catch (Exception e) {
-            throw new RuntimeException("Can't get all books from db", e);
         }
     }
 }
