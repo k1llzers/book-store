@@ -3,6 +3,7 @@ package book.store.bookstore.repositorie.impl;
 import book.store.bookstore.model.Book;
 import book.store.bookstore.repositorie.BookRepository;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,7 +27,7 @@ public class BookRepositoryImpl implements BookRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can`t insert book into DB: " + book,e);
+            throw new RuntimeException("Can`t insert book into DB: " + book, e);
         }
     }
 
@@ -35,8 +36,6 @@ public class BookRepositoryImpl implements BookRepository {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from " + Book.class.getSimpleName(),
                     Book.class).getResultList();
-        } catch (Exception e) {
-            throw new RuntimeException("Can't get all books from db", e);
         }
     }
 }
