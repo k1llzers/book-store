@@ -3,6 +3,7 @@ package book.store.bookstore.repositorie.impl;
 import book.store.bookstore.model.Book;
 import book.store.bookstore.repositorie.BookRepository;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -35,6 +36,13 @@ public class BookRepositoryImpl implements BookRepository {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from " + Book.class.getSimpleName(),
                     Book.class).getResultList();
+        }
+    }
+
+    @Override
+    public Optional<Book> findById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return Optional.ofNullable(session.get(Book.class, id));
         }
     }
 }
