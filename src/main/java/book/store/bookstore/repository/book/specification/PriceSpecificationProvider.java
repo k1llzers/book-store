@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PriceSpecificationProvider implements SpecificationProvider<Book> {
+    private static final int INDEX_OF_MAX_VALUE = 1;
+    private static final int INDEX_OF_MIN_VALUE = 0;
+
     @Override
     public String getKey() {
         return "price";
@@ -15,7 +18,7 @@ public class PriceSpecificationProvider implements SpecificationProvider<Book> {
 
     public Specification<Book> getSpecification(String[] price) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.between(root.get("price"),
-                BigDecimal.valueOf(Long.parseLong(price[0])),
-                BigDecimal.valueOf(Long.parseLong(price[1])));
+                BigDecimal.valueOf(Long.parseLong(price[INDEX_OF_MIN_VALUE])),
+                BigDecimal.valueOf(Long.parseLong(price[INDEX_OF_MAX_VALUE])));
     }
 }
