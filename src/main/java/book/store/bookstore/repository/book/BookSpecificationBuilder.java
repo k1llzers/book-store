@@ -21,13 +21,13 @@ public class BookSpecificationBuilder implements SpecificationBuilder<Book> {
                     .and(specificationProviderManager.getSpecificationProvider("author")
                             .getSpecification(bookSearchParameters.authors()));
         }
-        if (bookSearchParameters.max() != null || bookSearchParameters.min() != null) {
-            String min = bookSearchParameters.min() == null
+        if (bookSearchParameters.maxPrice() != null || bookSearchParameters.minPrice() != null) {
+            String min = bookSearchParameters.minPrice() == null
                     ? "0"
-                    : bookSearchParameters.min().toString();
-            String max = bookSearchParameters.max() == null
+                    : bookSearchParameters.minPrice().toString();
+            String max = bookSearchParameters.maxPrice() == null
                     ? String.valueOf(Long.MAX_VALUE)
-                    : bookSearchParameters.max().toString();
+                    : bookSearchParameters.maxPrice().toString();
             specification = specification
                     .and(specificationProviderManager.getSpecificationProvider("price")
                             .getSpecification(new String[]{min,max}));
